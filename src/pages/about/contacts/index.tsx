@@ -4,8 +4,15 @@ import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import InfoHeader from "@/components/InfoHeader/InfoHeader";
 import DefinitionPhoneList from "@/components/DefinitionPhoneList/DefinitionPhoneList";
 import ButtonGetInTouch from "@/components/ButtonGetInTouch/ButtonGetInTouch";
+import useTelegram from "hooks/useTelegram";
 
 const ContactsPage = () => {
+  const { tg } = useTelegram()
+  const handleGetInTouch = () => {
+    if (tg) {
+      tg.sendData("/help")
+    }
+  };
   return (
     <SectionContainer>
       <BackButton />
@@ -30,9 +37,8 @@ const ContactsPage = () => {
       />
       <ButtonGetInTouch
         Icon={GetInTouchIcon}
-        onClick={() => {
-          console.log("связались");
-        }}
+        onClick={handleGetInTouch}
+        onTouchStart={handleGetInTouch}
       />
     </SectionContainer>
   );

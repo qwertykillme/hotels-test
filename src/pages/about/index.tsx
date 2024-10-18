@@ -171,7 +171,11 @@ const AboutPage = () => {
           onClick={handleInfoButton}
         />
       </SectionContainer>
-      <ButtonGetInTouch Icon={GetInTouchIcon} onClick={handleGetInTouch} />
+      <ButtonGetInTouch 
+        Icon={GetInTouchIcon} 
+        onClick={handleGetInTouch} 
+        onTouchStart={handleGetInTouch}
+      />
 
       <AnimatedModal isOpen={ModalVisibility} onModalClose={onModalClose}>
         {renderModalContent()}
