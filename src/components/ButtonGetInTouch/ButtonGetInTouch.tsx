@@ -16,28 +16,18 @@ const ButtonGetInTouch: React.FC<IButtonGetInTouchProps> = ({
 
   const {tg} = useTelegram();
 
-  const handleGetInTouch = (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
-    event.preventDefault()
+  const handleGetInTouch = () => {
     if (tg) {
       tg.ready();
       tg.sendData("/help")
-      console.log("tg", {tg})
     }
   };
 
-  const handleGetInTouchMobile = (event: React.TouchEvent<HTMLButtonElement> | React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    if (tg) {
-      tg.ready();
-      tg.sendData("/help")
-      console.log("tg Mobile", {tg})
-    }
-  };
+
   return (
     <button
       className={styles.button}
       onClick={handleGetInTouch}
-      onTouchStart={handleGetInTouchMobile}
       style={customStyles ? { ...customStyles } : {}}
     >
       {text}
