@@ -19,17 +19,19 @@ const ButtonGetInTouch: React.FC<IButtonGetInTouchProps> = ({
   const handleGetInTouch = (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
     event.preventDefault()
     if (tg) {
+      tg.ready();
       tg.sendData("/help")
-    console.log("tg", {tg})
+      console.log("tg", {tg})
     }
   };
 
   const handleGetInTouchMobile = (event: React.TouchEvent<HTMLButtonElement> | React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     if (tg) {
+      tg.ready();
       tg.sendData("/help")
+      console.log("tg Mobile", {tg})
     }
-    console.log("tg Mobile", {tg})
   };
   return (
     <button
