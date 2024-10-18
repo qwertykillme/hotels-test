@@ -1,11 +1,11 @@
-import { CSSProperties } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./styles.module.scss";
 import useTelegram from "hooks/useTelegram";
 
 interface IButtonGetInTouchProps {
   text?: string;
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  customStyles?: CSSProperties;
+  customStyles?: React.CSSProperties;
 }
 
 const ButtonGetInTouch: React.FC<IButtonGetInTouchProps> = ({
@@ -13,33 +13,37 @@ const ButtonGetInTouch: React.FC<IButtonGetInTouchProps> = ({
   Icon,
   customStyles,
 }) => {
+  const { tg } = useTelegram();
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  const {tg} = useTelegram();
+  useEffect(() => {
+    const buttonElement = buttonRef.current;
 
-  const handleGetInTouch = (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
-    // event.preventDefault()
-    console.log('test')
-    if (tg) {
-      tg.ready();
-      tg.sendData("/help")
-      console.log("tg", {tg})
+    const handleGetInTouch = () => {
+      if (tg) {
+        tg.ready();
+        tg.sendData("/help");
+        console.log("Команда /help отправлена");
+      } else {
+        console.error("Telegram WebApp API не инициализирован");
+      }
+    };
+
+    if (buttonElement) {
+      buttonElement.addEventListener("click", handleGetInTouch);
+      buttonElement.addEventListener("touchstart", handleGetInTouch); 
+
+      return () => {
+        buttonElement.removeEventListener("click", handleGetInTouch);
+        buttonElement.removeEventListener("touchstart", handleGetInTouch);
+      };
     }
-  };
+  }, [tg]);
 
-  const handleGetInTouchMobile = (event: React.TouchEvent<HTMLButtonElement> | React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    console.log('test 2')
-    if (tg) {
-      tg.ready();
-      tg.sendData("/help")
-      console.log("tg Mobile", {tg})
-    }
-  };
   return (
     <button
+      ref={buttonRef}
       className={styles.button}
-      onClick={handleGetInTouch}
-      onTouchStart={handleGetInTouchMobile}
       style={customStyles ? { ...customStyles } : {}}
     >
       {text}
