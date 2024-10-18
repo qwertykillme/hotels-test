@@ -24,10 +24,8 @@ import { ReactComponent as InfoIcon } from "@/assets/svg/info.svg";
 import clsx from "clsx";
 import BackButton from "@components/BackButton/BackButton";
 import { hotelsAPIService } from "@redux/services/hotelsService";
-import useTelegram from "hooks/useTelegram";
 
 const AboutPage = () => {
-  const {tg} = useTelegram()
   const navigate = useNavigate();
 
   const [ModalVisibility, setModalVisibility] = useState(false);
@@ -58,22 +56,7 @@ const AboutPage = () => {
   const handleInfoButton = () => {
     navigate("/about/description");
   };
-  const handleGetInTouch = (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    if (tg) {
-      tg.sendData("/help")
-    console.log("tg", {tg})
 
-    }
-  };
-
-  const handleGetInTouchMobile = (event: React.TouchEvent<HTMLButtonElement> | React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    if (tg) {
-      tg.sendData("/help")
-    }
-    console.log("tg Mobile", {tg})
-  };
   const handleCallButton = () => {
     navigate("/about/contacts");
   };
@@ -184,8 +167,6 @@ const AboutPage = () => {
       </SectionContainer>
       <ButtonGetInTouch 
         Icon={GetInTouchIcon} 
-        onClick={handleGetInTouch} 
-        onTouchStart={handleGetInTouchMobile}
       />
 
       <AnimatedModal isOpen={ModalVisibility} onModalClose={onModalClose}>

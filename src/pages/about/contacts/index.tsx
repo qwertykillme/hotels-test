@@ -4,26 +4,9 @@ import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import InfoHeader from "@/components/InfoHeader/InfoHeader";
 import DefinitionPhoneList from "@/components/DefinitionPhoneList/DefinitionPhoneList";
 import ButtonGetInTouch from "@/components/ButtonGetInTouch/ButtonGetInTouch";
-import useTelegram from "hooks/useTelegram";
 
 const ContactsPage = () => {
-  const { tg } = useTelegram()
-  const handleGetInTouch = (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
-    event.preventDefault()
-    if (tg) {
-      tg.sendData("/help")
-    }
-    console.log("tg", {tg})
 
-  };
-
-  const handleGetInTouchMobile = (event: React.TouchEvent | React.MouseEvent) => {
-    event.preventDefault()
-    if (tg) {
-      tg.sendData("/help")
-    }
-    console.log("tg Mobile", {tg})
-  };
   return (
     <SectionContainer>
       <BackButton />
@@ -48,8 +31,6 @@ const ContactsPage = () => {
       />
       <ButtonGetInTouch
         Icon={GetInTouchIcon}
-        onClick={handleGetInTouch}
-        onTouchStart={handleGetInTouchMobile}
       />
     </SectionContainer>
   );

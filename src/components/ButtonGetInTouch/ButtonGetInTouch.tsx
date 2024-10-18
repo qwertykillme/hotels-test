@@ -1,26 +1,41 @@
 import { CSSProperties } from "react";
 import styles from "./styles.module.scss";
+import useTelegram from "hooks/useTelegram";
 
 interface IButtonGetInTouchProps {
   text?: string;
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  onTouchStart: (event: React.TouchEvent<HTMLButtonElement>) => void;
   customStyles?: CSSProperties;
 }
 
 const ButtonGetInTouch: React.FC<IButtonGetInTouchProps> = ({
   text = "Связаться с отелем",
   Icon,
-  onClick,
-  onTouchStart,
   customStyles,
 }) => {
+
+  const {tg} = useTelegram();
+
+  const handleGetInTouch = (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    if (tg) {
+      tg.sendData("/help")
+    console.log("tg", {tg})
+    }
+  };
+
+  const handleGetInTouchMobile = (event: React.TouchEvent<HTMLButtonElement> | React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    if (tg) {
+      tg.sendData("/help")
+    }
+    console.log("tg Mobile", {tg})
+  };
   return (
     <button
       className={styles.button}
-      onClick={onClick}
-      onTouchStart={onTouchStart}
+      onClick={handleGetInTouch}
+      onTouchStart={handleGetInTouchMobile}
       style={customStyles ? { ...customStyles } : {}}
     >
       {text}
