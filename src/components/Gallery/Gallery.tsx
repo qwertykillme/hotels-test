@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ImageZoomModal from "../ImageZoomModal/ImageZoomModal";
 import styles from "./styles.module.scss";
 import ImageZoomCarousel from "../ImageZoomCarousel/ImageZoomCarouse";
 
@@ -29,7 +28,7 @@ const Gallery: React.FC<IGalleryProps> = ({ title, images }) => {
             className={styles.imageWrapper}
             onClick={() => handleClick(index)}
           >
-            <img src={image} className={styles.image} alt={`Image ${index}`} />
+            <img src={image} className={styles.image} alt={`${index}`} />
           </div>
         ))}
       </div>

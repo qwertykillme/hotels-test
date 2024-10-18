@@ -1,5 +1,4 @@
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import styles from "./styles.module.scss";
 import Accordion from "@/components/Accordion/Accordion";
 import AccordionCard from "@/components/AccordionCard/AccordionCard";
 import AccordionItemButtons from "@/components/AccordionItemButtons/AccordionItemButtons";

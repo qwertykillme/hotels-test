@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import Button from "../Button/Button";
 
@@ -20,15 +20,15 @@ const ImageZoomCarousel: React.FC<IImageZoomCarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState<number>(initIndex);
   const [startTouch, setStartTouch] = useState<number | null>(null);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
+  }, [images]);
+  
+  const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [images]);
 
   const handleTouchStart = (event: React.TouchEvent) => {
     setStartTouch(event.touches[0].clientX);
@@ -68,7 +68,7 @@ const ImageZoomCarousel: React.FC<IImageZoomCarouselProps> = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [handleNext, handlePrev, onClose]);
 
   return (
     <div className={styles.container} onClick={onClose}>
@@ -95,7 +95,7 @@ const ImageZoomCarousel: React.FC<IImageZoomCarouselProps> = ({
           />
         </div>
 
-        <img className={styles.image} src={images[currentIndex]} />
+        <img className={styles.image} src={images[currentIndex]} alt="картинка"/>
         <div className={clsx(styles.buttons, styles.buttonRight)}>
           <Button
             text=""

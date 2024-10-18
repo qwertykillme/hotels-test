@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 //иконки
 import { ReactComponent as BellIcon } from "@/assets/svg/bell.svg";
 import { ReactComponent as ArrowIcon } from "@/assets/svg/arrow-right.svg";
-import { selectCurrentHotel } from "@redux/slices/currentTripSlice";
 
 interface ICurrentTripButtonProps {
   hotelName: string

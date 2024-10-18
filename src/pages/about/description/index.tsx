@@ -15,10 +15,6 @@ const test = [
   "Массаж",
 ];
 
-const handleClick = () => {
-  console.log("редирект на нужную запись");
-};
-
 const url =
   "https://sun9-35.userapi.com/impg/q-3zqxvqHk_rq7pwKlwvjbYnaWOXypSmFymung/x_7mExM4DUU.jpg?size=2560x1706&quality=95&sign=89e20a6d815d8e8de1559ad6c171b655&type=album";
 

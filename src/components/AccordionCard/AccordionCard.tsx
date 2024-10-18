@@ -26,7 +26,7 @@ const AccordionCard: React.FC<IAccordionCardProps> = ({
   return (
     <section className={styles.container}>
       <div className={styles.imgwrapper}>
-        <img src={imageSrc} className={styles.image} onClick={handleImgClick} />
+        <img src={imageSrc} className={styles.image} onClick={handleImgClick} alt="картиночка"/>
       </div>
 
       {children && <div className={styles.children}>{children}</div>}

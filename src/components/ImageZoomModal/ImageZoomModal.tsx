@@ -20,12 +20,12 @@ const ImageZoomModal: React.FC<ImageZoomModalProps> = ({
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onClose]);
 
   return (
     <div className={styles.container} onClick={onClose}>
       <div className={styles.content}>
-        <img src={imageSrc} className={styles.image} />
+        <img src={imageSrc} className={styles.image} alt="описание"/>
       </div>
     </div>
   );

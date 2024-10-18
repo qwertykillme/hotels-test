@@ -66,13 +66,7 @@ const AnimatedModal: React.FC<IAnimatedModalProps> = ({
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isOpen]);
-
-  // const handleClick = (e: React.MouseEvent) => {
-  //     if (modalRef.current && modalRef.current.contains(e.target as Node)) {
-  //         e.stopPropagation();
-  //     }
-  // };
+  }, [isOpen, handleClickOutside]);
 
   return (
     <div

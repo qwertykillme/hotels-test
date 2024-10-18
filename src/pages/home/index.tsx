@@ -8,12 +8,11 @@ import CurrentTripButton from "@/components/CurrentTripButton/CurrentTripButton"
 import { ReactComponent as MapPin } from "@/assets/svg/map-pin.svg";
 import { ReactComponent as Map } from "@/assets/svg/map.svg";
 import { ReactComponent as Arrow } from "@/assets/svg/arrow-right.svg";
-import BackButton from "@components/BackButton/BackButton";
 import useTelegram from "hooks/useTelegram";
 
 
 const HomePage = ({username} : {username: string | null}) => {
-  const { tg, user } = useTelegram()
+  const { user } = useTelegram()
   const navigate = useNavigate();
 
   const handleAddTrip = () => {
