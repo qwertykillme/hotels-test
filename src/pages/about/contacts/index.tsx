@@ -13,6 +13,8 @@ const ContactsPage = () => {
     if (tg) {
       tg.sendData("/help")
     }
+    console.log("tg", {tg})
+
   };
 
   const handleGetInTouchMobile = (event: React.TouchEvent | React.MouseEvent) => {
@@ -20,6 +22,7 @@ const ContactsPage = () => {
     if (tg) {
       tg.sendData("/help")
     }
+    console.log("tg Mobile", {tg})
   };
   return (
     <SectionContainer>

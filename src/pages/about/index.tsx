@@ -62,6 +62,8 @@ const AboutPage = () => {
     event.preventDefault()
     if (tg) {
       tg.sendData("/help")
+    console.log("tg", {tg})
+
     }
   };
 
@@ -70,6 +72,7 @@ const AboutPage = () => {
     if (tg) {
       tg.sendData("/help")
     }
+    console.log("tg Mobile", {tg})
   };
   const handleCallButton = () => {
     navigate("/about/contacts");
