@@ -6,7 +6,7 @@ import DescriptionPage from "@pages/about/description";
 import RestaurantPage from "@pages/about/restaurants";
 import ServicesPage from "@pages/about/services";
 import AddTripPage from "@pages/add-trip";
-import TripHistory from "@pages/trip-history";
+import TripHistoryPage from "@pages/trip-history";
 import SpaPage from "@pages/about/services/spa";
 
 const AppRoutes = () => {
@@ -23,7 +23,7 @@ const AppRoutes = () => {
         <Route path="/about/services/spa" element={<SpaPage />}></Route>
 
         <Route path="/add-trip" element={<AddTripPage />}></Route>
-        <Route path="/trip-history" element={<TripHistory />}></Route>
+        <Route path="/trip-history" element={<TripHistoryPage />}></Route>
       </Routes>
     </Router>
   );

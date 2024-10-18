@@ -7,12 +7,14 @@ interface IAnimatedModalProps {
   isOpen: boolean;
   onModalClose: () => void;
   children: React.ReactNode;
+  classname?: string;
 }
 
 const AnimatedModal: React.FC<IAnimatedModalProps> = ({
   isOpen,
   onModalClose,
   children,
+  classname
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [startTouch, setStartTouch] = useState<number | null>(null);
@@ -32,6 +34,7 @@ const AnimatedModal: React.FC<IAnimatedModalProps> = ({
   const handleOverlayClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
+    event.stopPropagation()
     if (modalRef.current && modalRef.current.contains(event.target as Node))
       return;
     if (event.target === (event.currentTarget as Node)) {
@@ -80,7 +83,9 @@ const AnimatedModal: React.FC<IAnimatedModalProps> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className={styles.content}>{children}</div>
+          <div className={clsx({ [styles.content]: !classname }, classname)}>
+          {children}
+        </div>
       </div>
     </div>
   );

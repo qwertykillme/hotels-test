@@ -1,13 +1,14 @@
 import BackButton from "@components/BackButton/BackButton";
 import SectionContainer from "@components/SectionContainer/SectionContainer";
+import TripHistory from "@components/TripHistory";
 
-const TripHistory = () => {
+const TripHistoryPage = () => {
   return (
     <SectionContainer>
       <BackButton />
-      <h1> TripHistory</h1>
+      <TripHistory/>
     </SectionContainer>
   );
 };
 
-export default TripHistory;
+export default TripHistoryPage;

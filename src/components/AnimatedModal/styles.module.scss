@@ -25,12 +25,13 @@
 
 .modal {
   @include common-block-styles;
+  padding: 20px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 180px;
+  max-height: 80vh;
   background-color: var(--component-color);
   transform: translateY(100%);
   transition: transform 0.5s ease;

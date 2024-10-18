@@ -11,7 +11,7 @@ interface IButtonProps {
   iconSize?: number;
   iconSizeRight?: number;
   text: string;
-  onClick: () => void;
+  onClick: any;
   styles?: React.CSSProperties;
   customLeftIconStyles?: React.CSSProperties;
   customRightIconStyles?: React.CSSProperties;

@@ -6,9 +6,9 @@ import BackButton from "@components/BackButton/BackButton";
 import SectionContainer from "@components/SectionContainer/SectionContainer";
 
 import { ReactComponent as AddIcon } from "@/assets/svg/plus-square.svg";
-import Modal from "@components/Modal";
+import AnimatedModal from "@components/AnimatedModal/AnimatedModal";
 
-//календарь
+// календарь
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ru } from "date-fns/locale";
@@ -16,7 +16,7 @@ import { format } from "date-fns";
 
 const AddTrip: React.FC = () => {
   registerLocale("ru", ru);
-  const hotels = ["Grand Karat Sochi", "Gwand Kawat Sochi", "UWUHotel"];
+  const hotels = ["Grand Karat Sochi", "я отель", "я тоже", "и я"];
 
   const [selectedHotel, setSelectedHotel] = useState<string | null>(null);
   const [checkInDate, setCheckInDate] = useState<Date | null>(null);
@@ -41,7 +41,10 @@ const AddTrip: React.FC = () => {
         <Button
           text={selectedHotel ? selectedHotel : "Отель"}
           RightIcon={AddIcon}
-          onClick={() => handleOpenModal("hotel")}
+          onClick={(event: React.MouseEvent) => {
+            event.stopPropagation(); 
+            handleOpenModal("hotel");
+          }}
           styles={{ width: "100%" }}
         />
 
@@ -52,7 +55,10 @@ const AddTrip: React.FC = () => {
               : "Дата заезда"
           }
           RightIcon={AddIcon}
-          onClick={() => handleOpenModal("checkIn")}
+          onClick={(event: React.MouseEvent) => {
+            event.stopPropagation(); 
+            handleOpenModal("checkIn");
+          }}
           styles={{ width: "100%" }}
         />
 
@@ -63,26 +69,30 @@ const AddTrip: React.FC = () => {
               : "Дата выезда"
           }
           RightIcon={AddIcon}
-          onClick={() => handleOpenModal("checkOut")}
+          onClick={(event: React.MouseEvent) => {
+            event.stopPropagation(); 
+            handleOpenModal("checkOut");
+          }}
           styles={{ width: "100%" }}
         />
         <Button
           text={roomNumber ? roomNumber : "Номер"}
           RightIcon={AddIcon}
-          onClick={() => handleOpenModal("room")}
+          onClick={(event: React.MouseEvent) => {
+            event.stopPropagation(); 
+            handleOpenModal("room");
+          }}
           styles={{ width: "100%" }}
         />
         <Button
           text="Добавить поездку"
           RightIcon={false}
-          onClick={() => {console.log("что-то делаю с данными")}}
-          styles={{ width: "100%", backgroundColor:"var(--accent-color)", marginTop: "auto" }}
-
+          onClick={() => console.log("что-то делаю с данными")}
+          styles={{ width: "100%", backgroundColor: "var(--accent-color)", marginTop: "auto" }}
         />
       </SectionContainer>
-      
 
-      <Modal isOpen={isModalOpen === "hotel"} onClose={handleCloseModal}>
+      <AnimatedModal isOpen={isModalOpen === "hotel"} onModalClose={handleCloseModal} classname={styles.modal}>
         <h3>Выберите отель</h3>
         <ul>
           {hotels.map((hotel, index) => (
@@ -97,9 +107,9 @@ const AddTrip: React.FC = () => {
             </li>
           ))}
         </ul>
-      </Modal>
+      </AnimatedModal>
 
-      <Modal isOpen={isModalOpen === "checkIn"} onClose={handleCloseModal}>
+      <AnimatedModal isOpen={isModalOpen === "checkIn"} onModalClose={handleCloseModal}>
         <div className={styles.calendar}>
           <h3>Выберите дату заезда</h3>
           <DatePicker
@@ -121,9 +131,9 @@ const AddTrip: React.FC = () => {
             }}
           />
         </div>
-      </Modal>
+      </AnimatedModal>
 
-      <Modal isOpen={isModalOpen === "checkOut"} onClose={handleCloseModal}>
+      <AnimatedModal isOpen={isModalOpen === "checkOut"} onModalClose={handleCloseModal}>
         <div className={styles.calendar}>
           <h3>Выберите дату выезда</h3>
           <DatePicker
@@ -145,12 +155,11 @@ const AddTrip: React.FC = () => {
             }}
           />
         </div>
-      </Modal>
+      </AnimatedModal>
 
-      <Modal isOpen={isModalOpen === "room"} onClose={handleCloseModal}>
+      <AnimatedModal isOpen={isModalOpen === "room"} onModalClose={handleCloseModal}>
         <div className={styles.calendar}>
-          <h3>Выберите ваш номер</h3>
-          
+          <h3 className={styles.chooseRoom}>Выберите ваш номер</h3>
           <input 
             type="text"
             value={roomNumber}
@@ -159,10 +168,19 @@ const AddTrip: React.FC = () => {
             className={styles.roomInput}
           />
 
-          
-        </div>
-      </Modal>
+          <Button
+            text="Сохранить"
+            RightIcon={false}
+            onClick={handleCloseModal}
+            styles={{
+              backgroundColor: "var(--accent-color)",
+              width: "100%",
+              marginTop: "10px",
+            }}
+          />
 
+        </div>
+      </AnimatedModal>
     </div>
   );
 };

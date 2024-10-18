@@ -10,9 +10,10 @@ interface IAccordionProps {
   text: string;
   children: ReactNode;
   footer?: ReactNode;
+  buttonClassName?: string;
 }
 
-const Accordion: React.FC<IAccordionProps> = ({ text, children, footer }) => {
+const Accordion: React.FC<IAccordionProps> = ({ text, children, footer, buttonClassName }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -23,7 +24,8 @@ const Accordion: React.FC<IAccordionProps> = ({ text, children, footer }) => {
     [styles.icon]: true,
     [styles.icon_open]: isOpen,
     [styles.icon_close]: !isOpen,
-  }), [isOpen])
+  }, buttonClassName), [isOpen, buttonClassName])
+  
   return (
     <div className={styles.container}>
       <div className={styles.button}>

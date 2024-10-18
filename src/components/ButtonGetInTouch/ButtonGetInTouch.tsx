@@ -23,9 +23,6 @@ const ButtonGetInTouch: React.FC<IButtonGetInTouchProps> = ({
       if (tg) {
         tg.ready();
         tg.sendData("/help");
-        console.log("Команда /help отправлена");
-      } else {
-        console.error("Telegram WebApp API не инициализирован");
       }
     };
 

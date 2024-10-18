@@ -11,7 +11,7 @@ import { ReactComponent as Arrow } from "@/assets/svg/arrow-right.svg";
 import useTelegram from "hooks/useTelegram";
 
 
-const HomePage = ({username} : {username: string | null}) => {
+const HomePage = () => {
   const { user } = useTelegram()
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ const HomePage = ({username} : {username: string | null}) => {
     console.log("добавилась поездка");
   };
   const handleGetHistory = () => {
-    navigate("trip-history");
+    navigate("/trip-history");
     console.log("показалась история");
   };
 
