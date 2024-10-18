@@ -58,7 +58,15 @@ const AboutPage = () => {
   const handleInfoButton = () => {
     navigate("/about/description");
   };
-  const handleGetInTouch = () => {
+  const handleGetInTouch = (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    if (tg) {
+      tg.sendData("/help")
+    }
+  };
+
+  const handleGetInTouchMobile = (event: React.TouchEvent<HTMLButtonElement> | React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     if (tg) {
       tg.sendData("/help")
     }
@@ -174,7 +182,7 @@ const AboutPage = () => {
       <ButtonGetInTouch 
         Icon={GetInTouchIcon} 
         onClick={handleGetInTouch} 
-        onTouchStart={handleGetInTouch}
+        onTouchStart={handleGetInTouchMobile}
       />
 
       <AnimatedModal isOpen={ModalVisibility} onModalClose={onModalClose}>

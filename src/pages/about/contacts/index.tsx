@@ -8,7 +8,15 @@ import useTelegram from "hooks/useTelegram";
 
 const ContactsPage = () => {
   const { tg } = useTelegram()
-  const handleGetInTouch = () => {
+  const handleGetInTouch = (event: React.MouseEvent<HTMLButtonElement> | React.TouchEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    if (tg) {
+      tg.sendData("/help")
+    }
+  };
+
+  const handleGetInTouchMobile = (event: React.TouchEvent | React.MouseEvent) => {
+    event.preventDefault()
     if (tg) {
       tg.sendData("/help")
     }
@@ -38,7 +46,7 @@ const ContactsPage = () => {
       <ButtonGetInTouch
         Icon={GetInTouchIcon}
         onClick={handleGetInTouch}
-        onTouchStart={handleGetInTouch}
+        onTouchStart={handleGetInTouchMobile}
       />
     </SectionContainer>
   );

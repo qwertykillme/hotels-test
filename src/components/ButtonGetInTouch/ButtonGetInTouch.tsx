@@ -4,8 +4,8 @@ import styles from "./styles.module.scss";
 interface IButtonGetInTouchProps {
   text?: string;
   Icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  onClick: () => void;
-  onTouchStart: () => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onTouchStart: (event: React.TouchEvent<HTMLButtonElement>) => void;
   customStyles?: CSSProperties;
 }
 
