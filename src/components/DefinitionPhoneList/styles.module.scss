@@ -1,0 +1,12 @@
+@import "@styles/mixins";
+
+.container {
+  @include common-block-styles;
+  padding: 16px 16px 8px 26px;
+  cursor: default;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: normal;
+}

@@ -1,0 +1,50 @@
+@import "@styles/mixins";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 3;
+}
+
+.overlay.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal {
+  @include common-block-styles;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 180px;
+  background-color: var(--component-color);
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.modalOpen {
+  transform: translateY(0);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}

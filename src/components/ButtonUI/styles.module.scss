@@ -1,0 +1,26 @@
+@import "@styles/mixins";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 21px;
+  height: 72px;
+  width: 72px;
+  user-select: none;
+  @include common-block-styles;
+}
+
+.text {
+  margin: 0;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+  cursor: text;
+}

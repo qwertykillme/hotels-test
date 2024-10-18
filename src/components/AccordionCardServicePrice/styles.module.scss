@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 0 18px 0 14px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.service {
+  font-weight: 300;
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.priceValue {
+  font-weight: 300;
+}
+
+.currency {
+  font-weight: 300;
+}
+
+.button {
+  width: 100%;
+  margin-top: auto;
+}

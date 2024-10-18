@@ -1,0 +1,36 @@
+@import "@styles/mixins";
+
+.button {
+  display: flex;
+  align-items: center;
+  // width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size);
+  padding: 14px 14px;
+  color: #262626;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @include common-block-styles;
+
+  .rightIcon {
+    background: red;
+  }
+}
+
+.leftPart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.leftIcon {
+  margin-right: 10px;
+}
+
+// .rightIcon {
+//   background-color: rgba(0,0,0,0);
+//   unicode-bidi: normal !important;
+// }

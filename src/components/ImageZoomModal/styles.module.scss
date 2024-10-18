@@ -1,0 +1,28 @@
+@import "@styles/mixins";
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.content {
+  max-width: 90%;
+  max-height: 90%;
+  position: relative;
+  background-position: center;
+  background-repeat: none;
+}
+
+.image {
+  @include common-block-styles;
+  width: 100%;
+  max-height: calc(100vh - 64px);
+}

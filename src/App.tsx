@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import AppRoutes from "./router";
+import "@styles/globals.css";
+import { Provider } from "react-redux";
+import store from "@/redux/store/store";
 
 function App() {
+
+  useEffect(() => {
+    if (window.Telegram?.WebApp) {
+      console.log('Telegram WebApp initialized');
+      window.Telegram.WebApp.ready();
+    } else {
+      console.error('Telegram WebApp not found');
+    }
+  }, []);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <AppRoutes />
+    </Provider>
   );
 }
 

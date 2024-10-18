@@ -1,0 +1,21 @@
+@import "@styles/mixins";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Затемнение */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  @include common-block-styles;
+  padding: 20px;
+  z-index: 10;
+  cursor: default;
+}
