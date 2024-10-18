@@ -24,8 +24,10 @@ import { ReactComponent as InfoIcon } from "@/assets/svg/info.svg";
 import clsx from "clsx";
 import BackButton from "@components/BackButton/BackButton";
 import { hotelsAPIService } from "@redux/services/hotelsService";
+import useTelegram from "hooks/useTelegram";
 
 const AboutPage = () => {
+  const {tg} = useTelegram()
   const navigate = useNavigate();
 
   const [ModalVisibility, setModalVisibility] = useState(false);
@@ -57,7 +59,9 @@ const AboutPage = () => {
     navigate("/about/description");
   };
   const handleGetInTouch = () => {
-    console.log("связались");
+    if (tg) {
+      tg.sendData("/help")
+    }
   };
   const handleCallButton = () => {
     navigate("/about/contacts");
