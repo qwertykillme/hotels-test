@@ -12,7 +12,7 @@ const DefinitionPhoneList: React.FC<IDefinitionPhoneList> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <h3 className={styles.title}>{title}:</h3>
+      <h3 className={styles.title}>{title}</h3>
       <ContactsList items={items} />
     </div>
   );

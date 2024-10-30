@@ -105,6 +105,10 @@ interface TelegramWebApp {
   readTextFromClipboard(callback?: (text: string) => void): void;
   requestWriteAccess(callback?: (granted: boolean) => void): void;
   requestContact(callback?: (granted: boolean) => void): void;
+  requestLocation(callbacks: {
+    success: (location: { latitude: number; longitude: number }) => void;
+    error?: (error: string) => void;
+  }): void;
   ready(): void;
   expand(): void;
   close(): void;

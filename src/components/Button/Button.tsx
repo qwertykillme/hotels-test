@@ -43,13 +43,11 @@ const Button: React.FC<IButtonProps> = ({
         />
         <span>{text}</span>
       </div>
-        <div className={style.rightIcon}>
-          <Icon
-            Icon={RightIcon as any}
-            size={iconSizeRight}
-            customStyles={customRightIconStyles}
-          />
-        </div>
+      <Icon
+        Icon={RightIcon as any}
+        size={iconSizeRight}
+        customStyles={customRightIconStyles}
+      />
     </button>
   );
 };

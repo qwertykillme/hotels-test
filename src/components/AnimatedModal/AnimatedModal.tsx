@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 interface IAnimatedModalProps {
   isOpen: boolean;
-  onModalClose: () => void;
+  onModalClose:any;
   children: React.ReactNode;
   classname?: string;
 }
@@ -21,26 +21,12 @@ const AnimatedModal: React.FC<IAnimatedModalProps> = ({
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         onModalClose();
       }
     },
-    [onModalClose]
+    [modalRef, onModalClose]  
   );
-
-  const handleOverlayClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    event.stopPropagation()
-    if (modalRef.current && modalRef.current.contains(event.target as Node))
-      return;
-    if (event.target === (event.currentTarget as Node)) {
-      onModalClose();
-    }
-  };
 
   const handleTouchStart = (event: React.TouchEvent) => {
     setStartTouch(event.touches[0].clientY);
@@ -59,22 +45,22 @@ const AnimatedModal: React.FC<IAnimatedModalProps> = ({
     setStartTouch(null);
   };
 
-  useEffect(() => {
+useEffect(() => {
     if (isOpen) {
-      document.addEventListener("click", handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     } else {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen, handleClickOutside]);
+
 
   return (
     <div
       className={clsx(styles.overlay, { [styles.open]: isOpen })}
-      onClick={handleOverlayClick}
     >
       <div
         className={clsx(styles.modal, { [styles.modalOpen]: isOpen })}
@@ -83,7 +69,7 @@ const AnimatedModal: React.FC<IAnimatedModalProps> = ({
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-          <div className={clsx({ [styles.content]: !classname }, classname)}>
+        <div className={clsx({ [styles.content]: !classname }, classname)}>
           {children}
         </div>
       </div>

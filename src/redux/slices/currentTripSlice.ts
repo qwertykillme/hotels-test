@@ -1,40 +1,42 @@
-import { RootState } from "@redux/store/store";
+import { IHotelRoom, ITripRes } from "@redux/services/hotelsService/response";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-interface TripState {
-  currentHotel: string;
-  currentRoom: string | number;
-  daysBeforeCheckout: string | number;
-}
 
-const initialState: TripState = {
-  currentHotel: "",
-  currentRoom: "",
-  daysBeforeCheckout: 0,
+const initialState: ITripRes = {
+  id: null,
+  created_at: "",
+  updated_at: "",
+  is_archived: false, 
+  adult_count: null,
+  child_count: null,
+  begin_at: "",
+  end_at: "",
+  room: null,
+  user_id: null,
+  hotel_id: null,
 };
 
 const currentTripSlice = createSlice({
   name: "currentTrip",
   initialState,
   reducers: {
-    setCurrentHotel: (state, action: PayloadAction<string>) => {
-      state.currentHotel = action.payload;
+    setCurrentTrip: (state, action: PayloadAction<ITripRes>) => {
+      state.id = action.payload.id;
+      state.created_at = action.payload.created_at;
+      state.updated_at = action.payload.updated_at;
+      state.is_archived = action.payload.is_archived;
+      state.adult_count = action.payload.adult_count;
+      state.child_count = action.payload.child_count;
+      state.begin_at = action.payload.begin_at;
+      state.end_at = action.payload.end_at;
+      state.room = action.payload.room;
+      state.user_id = action.payload.user_id;
+      state.hotel_id = action.payload.hotel_id;
     },
-    setCurrentRoom: (state, action: PayloadAction<string | number>) => {
-      state.currentRoom = action.payload;
-    },
-    setDaysBeforeCheckout: (state, action: PayloadAction<string | number>) => {
-      state.daysBeforeCheckout = action.payload;
+    setCurrentRoom: (state, action: PayloadAction<IHotelRoom>) => {
+      state.room = action.payload.room;
     },
   },
 });
 
-export const selectCurrentHotel = (state: RootState) =>
-  state.currentTrip.currentHotel;
-export const selectCurrentRoom = (state: RootState) =>
-  state.currentTrip.currentRoom;
-export const selectDaysBeforeCheckout = (state: RootState) =>
-  state.currentTrip.daysBeforeCheckout;
-
-export const { setCurrentHotel, setCurrentRoom, setDaysBeforeCheckout } =
-  currentTripSlice.actions;
+export const { setCurrentTrip, setCurrentRoom } = currentTripSlice.actions;
 export default currentTripSlice.reducer;

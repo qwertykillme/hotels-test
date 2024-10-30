@@ -31,12 +31,6 @@ const AccordionCardServicePrice: React.FC<IAccordionCardServicePriceProps> = ({
           text="Записаться"
           RightIcon={ContactIcon}
           iconSizeRight={16}
-          styles={{
-            backgroundColor: "var(--accent-color)",
-            fontSize: "16px",
-            padding: "6px 10px 4.5px 6px",
-            width: "100%",
-          }}
           onClick={onClick}
         />
       </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./styles.module.scss";
+import clsx from "clsx"; // Для объединения классов
 import ImageZoomCarousel from "../ImageZoomCarousel/ImageZoomCarouse";
 
 interface IGalleryProps {
@@ -18,17 +19,30 @@ const Gallery: React.FC<IGalleryProps> = ({ title, images }) => {
     setSelectedIndex(null);
   };
 
+  const limitedImages = images.slice(0, 4);
+  const showOverlay = images.length > 4; 
+
   return (
     <div className={styles.galleryContainer}>
-      {title && <h3 className={styles.title}> {title} </h3>}
-      <div className={styles.imagesContainer}>
-        {images.map((image, index) => (
+      {title && <h2 className={styles.title}> {title} </h2>}
+      <div className={clsx(styles.imagesContainer, {
+        [styles.empty] : !images.length
+      })}>
+        {!images?.length && 'В галерее пока пусто...'}
+        {limitedImages.map((image, index) => (
           <div
             key={index}
-            className={styles.imageWrapper}
+            className={clsx(styles.imageWrapper, {
+              [styles.moreImagesOverlay]: showOverlay && index === 3, 
+            })}
             onClick={() => handleClick(index)}
           >
             <img src={image} className={styles.image} alt={`${index}`} />
+            {showOverlay && index === 3 && (
+              <div className={styles.overlay}>
+                <span>ещё {images.length - 4}...</span>
+              </div>
+            )}
           </div>
         ))}
       </div>

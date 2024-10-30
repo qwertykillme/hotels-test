@@ -5,8 +5,8 @@ import Button from "@/components/Button/Button";
 import { ReactComponent as GetInTouchIcon } from "@/assets/svg/contact.svg";
 
 interface IAccordionItemButtonsProps {
-  onClickLeft: () => void;
-  onClickRight: () => void;
+  onClickLeft?: () => void;
+  onClickRight?: () => void;
 }
 
 const AccordionItemButtons: React.FC<IAccordionItemButtonsProps> = ({
@@ -15,7 +15,7 @@ const AccordionItemButtons: React.FC<IAccordionItemButtonsProps> = ({
 }) => {
   return (
     <div className={styles.buttons}>
-      <Button
+      {onClickLeft && <Button
         text="Записаться"
         onClick={onClickLeft}
         RightIcon={GetInTouchIcon}
@@ -25,9 +25,9 @@ const AccordionItemButtons: React.FC<IAccordionItemButtonsProps> = ({
           fontSize: "14px",
           width: "auto",
         }}
-      />
+      />}
 
-      <Button
+      {onClickRight && <Button
         text="Подробнее"
         onClick={onClickRight}
         styles={{
@@ -36,7 +36,7 @@ const AccordionItemButtons: React.FC<IAccordionItemButtonsProps> = ({
           fontSize: "14px",
           maxWidth: "50%",
         }}
-      />
+      />}
     </div>
   );
 };

@@ -11,40 +11,34 @@ import { ReactComponent as Arrow } from "@/assets/svg/arrow-right.svg";
 import useTelegram from "hooks/useTelegram";
 
 
+
 const HomePage = () => {
+  
   const { user } = useTelegram()
   const navigate = useNavigate();
-
-  const handleAddTrip = () => {
-    navigate("/add-trip");
-    console.log("добавилась поездка");
-  };
-  const handleGetHistory = () => {
-    navigate("/trip-history");
-    console.log("показалась история");
-  };
+  const handleNavigation = (path: string) => () => navigate(path);
 
   return (
-    <div className={styles.container}>
       <SectionContainer>
-        <div className={styles.greeting}> {`Утра! @${ user ? user.first_name : " "}`}</div>
+        {/* <InfoHeader title={`Утра, @${ user ? user.first_name : "Константин"}`}  /> */}
+        <div className={styles.greeting}> {`Утра! @${ user ? user.first_name : "Константин"}`}</div>
         <Button
           LeftIcon={MapPin}
           RightIcon={Arrow}
           text="Добавить поездку"
-          onClick={handleAddTrip}
+          onClick={handleNavigation("/add-trip")}
         />
         <Button
           LeftIcon={Map}
           RightIcon={Arrow}
           text="История поездок"
-          onClick={handleGetHistory}
+          onClick={handleNavigation("/trip-history")}
         />
-      </SectionContainer>
-      <CurrentTripButton 
+        <CurrentTripButton 
         hotelName="Grand Karat Sochi"
       />
-    </div>
+      </SectionContainer>
+  
   );
 };
 

@@ -1,9 +1,10 @@
 :root {
   --font-size-small: 18px;
   --font-size: 20px;
-  --font-size-large: 24px;
+  --font-size-large: 22px;
   --font-color: white;
   --accent-color: #5da2d3;
+  --sub-color: #9499A2;
   --component-color: #242f3d;
   --box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
   --border-radius: 8px;
@@ -13,7 +14,7 @@
 
 body {
   margin: 0;
-  padding: 14px 10px 20px 10px;
+  padding: 12px ;
   height: 100vh;
   width: 100vw;
   font-family: var(--font-family);
@@ -35,51 +36,3 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
-
-/* дурацкий календарь */
-/* потом вынесу */
-
-.react-datepicker {
-  background-color: var(--component-color);; 
-  border: none;
-  font-size: 18px;
-  
-}
-
-.react-datepicker__header {
-  background-color: var(--component-color);; 
-  border-bottom: none;
-  color: #fff; 
-}
-
-.react-datepicker__current-month {
-  color: #fff;
-  font-size: 16px;
-}
-
-.react-datepicker__day {
-  color: #fff; 
-}
-
-.react-datepicker__day--today {
-  background-color: transparent;
-  font-weight: bold; 
-  border-radius: 4px ;
-}
-
-.react-datepicker__day-name {
-  color: var(--accent-color); 
-  font-size: 18px; 
-}
-
-.react-datepicker__day--selected {
-  background-color: #1B2533; 
-  outline: 1px solid var(--accent-color);
-  color: #fff; 
-}
-.react-datepicker__day:hover {
-  background-color: #3C5473 !important; 
-  color: white;
-}
-
-

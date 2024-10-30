@@ -1,59 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+}
 .dl {
   margin: 0;
-  width: 100%;
+
   height: auto;
-  padding: 0 15px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
-  font-size: 14px;
+  align-items: center;
+  font-size: 16px;
   gap: 10px;
+  background-color: var(--component-color);
+  // outline: 2px solid var(--accent-color);
+  border-radius: 8px;;
+  box-sizing: border-box;
 }
 
 .title {
   display: flex;
   width: 100%;
   justify-content: start;
-  font-size: 20px;
-  font-weight: 400;
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
 .dt {
   display: flex;
-  justify-content: flex-start;
-  width: 50%;
+  align-items: center;
   color: #808080;
   font-weight: 400;
   margin: 0;
+  font-size: 20px;
 }
 
 .dd {
-  max-width: 50%;
+  // min-width: 180px;
+  min-width: 50%;
   display: flex;
   align-items: center;
   justify-content: end;
   color: var(--accent-color);
   font-weight: 500;
+  flex-wrap: nowrap;
+  font-size: 20px;
   margin: 0;
-  overflow-wrap: break-word;
-  word-break: break-word;
+
 }
 
-.numberValue {
+.dd_content {
+  display: flex;
+  flex-direction: column;
+}
+
+.password {
+  text-align: end;
   cursor: pointer;
+  display: flex;
+  gap: 8px;
+  align-items: center;
   &:hover {
     text-decoration: underline;
   }
 }
 
-.textValue {
-  color: var(--accent-color);
+.schedule_title {
+  margin: 0;
+  padding: 16px 0;
 }
+

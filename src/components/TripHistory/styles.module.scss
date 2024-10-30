@@ -1,28 +1,27 @@
 @import "@/styles/mixins";
 
-.container {
+.tripHistory_container {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 16px;
+    margin: 0 8px;
 }
+
 
 .cardWrapper {
     display: flex;
     justify-content: center;
-    align-items: center
-}
-
-.title {
-    @include common-block-styles;
-    padding: 14px 28px;
-    margin: 4px 0;
-    cursor: default;
-    font-size: 20px;
-
+    align-items: center;
+    margin-bottom: 16px;
 }
 
 .customButton {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
+}
+
+.emptyState {
+    margin-bottom: 16px;
+    color: var(--sub-color) ;
 }

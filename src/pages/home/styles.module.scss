@@ -1,14 +1,8 @@
 @import "@styles/mixins";
 
-.container {
-  height: calc(100vh - 18px);
-  display: flex;
-  flex-direction: column;
-}
-
 .greeting {
-  @include common-block-styles;
-  padding: 14px;
+  @include accent-block-styles;
+  padding: 16px;
   box-sizing: border-box;
   cursor: default;
 }

@@ -1,12 +1,11 @@
 @import "@styles/mixins";
 
 .container {
-  @include common-block-styles;
+  @include accent-block-styles;
   display: flex;
   flex-direction: column;
-  padding: 12px 30px;
+  padding: 8px 16px;
   gap: 10px;
-  margin-bottom: 10px;
   cursor: default;
 }
 

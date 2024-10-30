@@ -1,0 +1,11 @@
+.navigation_container {
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &_button {
+        width: 100%;
+        padding: 20px;
+    }
+}

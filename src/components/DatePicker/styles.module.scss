@@ -1,0 +1,167 @@
+.conatinerDatePicker {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #262626;
+  text-transform: capitalize;
+}
+
+.conatinerCalendar {
+  max-width: 280px;
+  max-height: 400px;
+  padding: 0px 20px;
+  border-radius: 6px;
+  background-color: var(--component-color);
+  box-shadow: 4px 6px 8px rgba(0,0,0,0.5);
+  overflow: auto;
+  h1 {
+    white-space: nowrap;
+  }
+}
+
+.bodyCalendar {
+  display: flex;
+  flex-direction: column;
+}
+
+.weekContainer {
+  display: flex;
+  align-items: center;
+  // &:not(:last-child) {
+  //   margin-bottom: 2px;
+  // }
+}
+
+.labelDay {
+  font-family: Arial, Helvetica, sans-serif;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 131.5%;
+  min-width: 40px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  &.name {
+    color: var(--accent-color);
+  }
+  &.passive {
+    color: purple;
+  }
+  &.selectDay {
+    background-color: rgba(93, 162, 211, 0.30);
+    // min-height: 26px;
+    color: white;
+  }
+  &.initDay {
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+  }
+  &.lastDay {
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+  }
+  &.hide {
+    color: rgba(0,0,0,0);
+    background-color: rgba(0,0,0,0);
+    cursor: default;
+  }
+  // &:not(:last-child) {
+  //   padding-right: 6px;
+  // }
+}
+
+.containerMonth {
+  padding: 24px;
+}
+
+.monthTitle {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.icn {
+  user-select: none;
+  position: absolute;
+  fill: var(--accent-color);
+  cursor: pointer;
+  &.next{
+    right: 0px;
+    top: 5px;
+  }
+  &.prev {
+    left: -8px;
+    top: -10px;
+    transform: rotate(180deg);
+  }
+}
+
+.currentPeriod {
+  text-transform: none;
+  color: #787E93;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  flex-flow: row nowrap;
+  padding-bottom: 18px;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 13px;
+
+  &Actions {
+      display: flex;
+      gap: 16px;
+
+      button {
+          height: 48px;
+          padding-left: 20px;
+          padding-right: 29px;
+          border: 1px solid var(--accent-color);
+          border-radius: 4px;
+          color: var(--accent-color);
+          font-size: 14px;
+          font-weight: 500;
+          background: none;
+          font-family: Arial, Helvetica, sans-serif;
+          text-transform: capitalize;
+      }
+  }
+
+  &ConfirmButton {
+      background: var(--accent-color);
+      border-radius: 4px;
+      height: 48px;
+      padding: 0 20px;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: Arial, Helvetica, sans-serif;
+  }
+}

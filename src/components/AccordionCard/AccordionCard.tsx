@@ -2,15 +2,17 @@ import { useState } from "react";
 import styles from "./styles.module.scss";
 import ImageZoomModal from "../ImageZoomModal/ImageZoomModal";
 interface IAccordionCardProps {
+  title?: string,
   imageSrc: string;
-  itemsList?: string[];
   children?: React.ReactNode;
+  shortDescription?: string;
 }
 
 const AccordionCard: React.FC<IAccordionCardProps> = ({
   imageSrc,
-  itemsList,
+  shortDescription,
   children,
+  title='Описание'
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleImgClick = () => {
@@ -21,8 +23,6 @@ const AccordionCard: React.FC<IAccordionCardProps> = ({
     setIsModalOpen(false);
   };
 
-  let randomassId = 1;
-
   return (
     <section className={styles.container}>
       <div className={styles.imgwrapper}>
@@ -30,14 +30,10 @@ const AccordionCard: React.FC<IAccordionCardProps> = ({
       </div>
 
       {children && <div className={styles.children}>{children}</div>}
-
-      {itemsList && (
-        <ul className={styles.list}>
-          {itemsList.map((listItem, index) => (
-            <li key={`${randomassId++}-${index}`}> {listItem} </li>
-          ))}
-        </ul>
-      )}
+      <div className={styles.description}>
+        <h4 className={styles.description_title}>{title}</h4>
+        <div className={styles.description_info}> {shortDescription} </div>
+      </div>
 
       {isModalOpen && (
         <ImageZoomModal imageSrc={imageSrc} onClose={handleCloseModal} />

@@ -1,0 +1,42 @@
+@import "@styles/mixins";
+
+.container {
+    // @include common-block-styles
+    width: 100%;
+    align-items:flex-start ;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-width: 90%;
+}
+.title {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+}
+
+.date {
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+.departure {
+    color: var(--sub-color);
+}
+
+.departureDay {
+    color: var(--accent-color);
+    font-size: 20px;
+}

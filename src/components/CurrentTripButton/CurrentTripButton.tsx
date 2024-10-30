@@ -1,5 +1,4 @@
 import styles from "./styles.module.scss";
-import RedirectButtonWrapper from "../RedirectButtonWrapper/RedirectButtonWrapper";
 
 import { useNavigate } from "react-router-dom";
 
@@ -8,21 +7,22 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as BellIcon } from "@/assets/svg/bell.svg";
 import { ReactComponent as ArrowIcon } from "@/assets/svg/arrow-right.svg";
 
+
 interface ICurrentTripButtonProps {
   hotelName: string
 }
 
 const CurrentTripButton: React.FC<ICurrentTripButtonProps> = ({hotelName}) => {
-
   const navigate = useNavigate();
 
+  //todo
+  //пока что хардкод пока беком не возвращается настоящая текущая поездка
   const handleRedirect = () => {
-    navigate("/about");
+    navigate("/trip/1");
   };
 
   return (
-    <RedirectButtonWrapper onClick={handleRedirect}>
-      <div className={styles.container}>
+      <div className={styles.container} onClick={handleRedirect}>
         <div className={styles.wrapper}>
           <div className={styles.upperPart}>
             <BellIcon />
@@ -32,7 +32,6 @@ const CurrentTripButton: React.FC<ICurrentTripButtonProps> = ({hotelName}) => {
         </div>
         <ArrowIcon />
       </div>
-    </RedirectButtonWrapper>
   );
 };
 

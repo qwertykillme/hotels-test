@@ -2,27 +2,36 @@
 
 .galleryContainer {
   @include common-block-styles;
-  padding: 16px 24px 18px 24px;
+  padding: 16px;
   cursor: default;
 }
 
 .title {
   margin: 0;
-  font-weight: normal;
   margin-bottom: 8px;
-  font-size: 20px;
+  font-size: var(--font-size);
 }
 
 .imagesContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  grid-auto-rows: 150px;
+  padding-top: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 150px);
   gap: 12px;
   width: 100%;
-  max-height: 270px;
-  overflow-y: scroll;
+  max-height: 320px;
+
   cursor: pointer;
   box-sizing: border-box;
+
+  &.empty {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    grid-template-columns: none;
+    grid-template-rows: none;
+  }
+
 }
 
 .imageWrapper {
@@ -34,10 +43,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
 }
 
 .image {
   object-fit: cover;
   width: 100%;
   height: 100%;
+}
+
+.imageOverlay {
+  position: relative;
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }

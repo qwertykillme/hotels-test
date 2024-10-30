@@ -1,0 +1,19 @@
+.description_container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    margin: 0 8px;
+}
+
+.description_wrapper {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    color: #808080;
+}
+
+.accentFont {
+    color: var(--accent-color)
+}
+
